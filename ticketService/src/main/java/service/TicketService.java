@@ -1,6 +1,8 @@
 package service;
 
 import java.util.Optional;
+import java.util.UUID;
+
 import model.SeatHold;
 
 /**
@@ -37,7 +39,7 @@ public interface TicketService {
      * @return a reservation confirmation code
      */
 
-    String reserveSeats(int seatHoldId, String customerEmail);
+    String reserveSeats(UUID seatHoldId, String customerEmail);
 
 
 }

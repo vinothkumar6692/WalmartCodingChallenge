@@ -1,13 +1,27 @@
 package service;
 
+import java.util.Calendar;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.joda.time.DateTime;
 import model.Seat;
+import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+
+import dao.HoldManagerDAO;
+import dao.TicketServiceDAO;
 
 import model.SeatHold;
 /**
@@ -16,10 +30,12 @@ import model.SeatHold;
  */
 
 public class TicketServiceImpl implements TicketService{
-	private JdbcTemplate jdbcTemplate;
-	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) { 
-	    this.jdbcTemplate = jdbcTemplate;
-	 }
+
+	private ApplicationContext ctx;
+	public TicketServiceImpl() {
+		super();
+	}
+
 	
 	  /**
      * @return returns the number of available seats for the specified level,
@@ -28,57 +44,42 @@ public class TicketServiceImpl implements TicketService{
      * @param venueLevel 
      * 			venue level identifier to limit the search. Eg: 1,2
      */
-	public synchronized int numSeatsAvailable(Optional<Integer> venueLevel){
-		if(venueLevel.isPresent()){
-			if(venueLevel.get()<=findLevels()){
-				int level = venueLevel.get();
-				String query = "select count(*) from Seat where levelId =" + level+" and status = 1";
-				return jdbcTemplate.queryForInt(query);					
-			}
-			else
-				return -1;					
-		}
-		 String query = "select count(*) from Seat where status = 1";
-		 return jdbcTemplate.queryForInt(query);
+	public int numSeatsAvailable(Optional<Integer> venueLevel){		
+			ctx = new ClassPathXmlApplicationContext(
+				    "applicationContext.xml");
+			HoldManagerDAO holdManager = (HoldManagerDAO) ctx.getBean("hdao");
+			holdManager.removeAllInvalidHolds();
+			TicketServiceDAO ticketServiceDAO = (TicketServiceDAO) ctx.getBean("tsdao");
+			return ticketServiceDAO.getAvailableSeats(venueLevel);
 		
 	}
 
 	public SeatHold findAndHoldSeats(int numSeats, Optional<Integer> minLevel, Optional<Integer> maxLevel, String customerEmail){
-		for(int i=minLevel.get();i<=maxLevel.get();i++){
-			String query = "select count(*) from Seat where levelId="+i+" and status =1";
-			int currentLevelSeatsAvailable = jdbcTemplate.queryForInt(query);
-			if(numSeats<= currentLevelSeatsAvailable){
-				// Seats are available in this level.
-				
+		ctx = new ClassPathXmlApplicationContext(
+			    "applicationContext.xml");
+		HoldManagerDAO holdManager = (HoldManagerDAO) ctx.getBean("hdao");
+		holdManager.removeAllInvalidHolds();
+		TicketServiceDAO ticketServiceDAO = (TicketServiceDAO) ctx.getBean("tsdao");
+		for(int i=minLevel.get();i<=maxLevel.get();i++){		
+			int currentLevelSeatsAvailable = ticketServiceDAO.findAvailableSeatsinLevel(i);
+			
+			// Seats are available in this level.
+			if(numSeats<= currentLevelSeatsAvailable){ 		
 				/* Find the best seats in the given level*/
-				String findBestSeatsQuery = "select * from Seat where levelId="+i+" and status =1"+" order by score limit "+numSeats;
-				List<Seat> seats  = jdbcTemplate.query(findBestSeatsQuery,
-						new BeanPropertyRowMapper(Seat.class));
+				List<Seat> seats  = ticketServiceDAO.findBestSeatsInLevel(i,numSeats);
 				System.out.println("Finding Seats");
-				System.out.println("Seat count:"+seats.size());
-				
+				System.out.println("Seat count:"+seats.size());			
 				for(Seat s : seats){
 					System.out.println("Seat count:"+s.getSeatID());
-				}
-							
+				}							
 				/* Create an entry in the Seathold Table for the current customer request*/
-				String uniqueHoldID = UUID.randomUUID().toString();
-				DateTime holdTime = new DateTime();
-				String seatHoldTableInsertQuery= "insert into Seathold (seatholdId, customerEmail,holdtime,noOfSeats) values(?, ?, ?, ?)" ;
-					jdbcTemplate.update(seatHoldTableInsertQuery, new Object[] { uniqueHoldID, customerEmail,
-						holdTime.toString(), numSeats
-					});				
-					for(Seat s : seats){
-						/*Update the obtained seat no information in the SeatHoldMapping Table
-						 * */									
-						String holdMappingQuery= "insert into SeatholdMapping (seatholdId,seatId) values(?, ?)" ;
-						jdbcTemplate.update(holdMappingQuery, new Object[] { uniqueHoldID, s.getSeatID()							
-						});
-						/*Change Status of Seats to Hold in Seats Table
-						 * */
-						String seatStatusChangeQuery = "update Seat set status = 2 where seatId = "+s.getSeatID();
-						jdbcTemplate.update(seatStatusChangeQuery);
-					}
+				UUID uniqueId = UUID.randomUUID();
+				String uniqueHoldID = uniqueId.toString();
+				Timestamp holdTime = new java.sql.Timestamp(Calendar.getInstance().getTime().getTime());				
+				ticketServiceDAO.createNewSeatHoldId(uniqueHoldID, customerEmail,holdTime, numSeats);	
+				ticketServiceDAO.updateSeatHoldInformation(seats, uniqueHoldID);				
+				SeatHold seatHold = new SeatHold(uniqueId,customerEmail,holdTime,null,null,numSeats);
+				return seatHold;				
 			}
 			else
 				continue;
@@ -86,13 +87,27 @@ public class TicketServiceImpl implements TicketService{
 		return null;
 	}
 
-	public String reserveSeats(int seatHoldId, String customerEmail){
-		return "";
-	}
-	/* Helper method to find the number of Levels in the theater*/
-	public int findLevels(){
-		String query = "select count(*) from level";
-		return jdbcTemplate.queryForInt(query);
-		
-	}
+	public String reserveSeats(UUID seatHoldId, String customerEmail){
+		ctx = new ClassPathXmlApplicationContext(
+			    "applicationContext.xml");
+		HoldManagerDAO holdManager = (HoldManagerDAO) ctx.getBean("hdao");
+		holdManager.removeAllInvalidHolds();
+		TicketServiceDAO ticketServiceDAO = (TicketServiceDAO) ctx.getBean("tsdao");
+		Timestamp currentTime = new java.sql.Timestamp(Calendar.getInstance().getTime().getTime());
+		Timestamp holdTime = ticketServiceDAO.findHoldTime(seatHoldId);
+		long holdReserveTimeDifference = currentTime.getTime()-holdTime.getTime();		
+		System.out.println("Time current:"+currentTime);
+		System.out.println("Time fetched:"+holdTime);
+		System.out.println(holdReserveTimeDifference);
+		if(holdReserveTimeDifference>60000){
+			return "Unable to reserve ticket! Hold time has expired 60 seconds";
+		}
+		else{
+			/* Reserve the seats for the corresponding seatHoldId*/		
+			String confirmationCode = UUID.randomUUID().toString();					
+			ticketServiceDAO.reserveHoldTicket(confirmationCode,currentTime,seatHoldId);
+			
+			}			
+			return "Booking Succesfull!";			
+		}	
 }

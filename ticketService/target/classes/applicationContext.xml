@@ -21,4 +21,11 @@
  <bean id="tdao" class="service.TicketServiceImpl">
   <property name="jdbcTemplate" ref="jdbcTemplate" />
  </bean>
+ <bean id="hdao" class="dao.HoldManagerDAO">
+  <property name="jdbcTemplate" ref="jdbcTemplate" />
+ </bean>
+  <bean id="tsdao" class="dao.TicketServiceDAO">
+  <property name="jdbcTemplate" ref="jdbcTemplate" />
+ </bean>
+ 
 </beans>
