@@ -6,7 +6,7 @@ Implement a simple ticket service that facilitates the discovery, temporary hold
 
 For example, see the seating arrangement and pricing details for a simple venue below.
 
-<img src = "https://postimg.org/image/il73reh4p/" align = "center">
+<img src = "https://s12.postimg.org/fr3ydyeyl/Screen_Shot_2016_08_24_at_2_55_06_AM.png" align = "center">
 
 Supported Functions
 =======
