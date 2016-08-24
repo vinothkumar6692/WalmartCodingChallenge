@@ -54,11 +54,20 @@ So a Seat at **R1-S1**(which is the left most seat on the first row) will have a
 Similarly, seat **R3-S5** will have a higher score than R1-S5 because **R3-S5** is farther from the screen than **R1-S5** and hence has will provide a lesser experience to the customer
 
 
-
-
-
 Installation Instructions 
 =======
+
+
+Other Supported Functions
+=======
+
+In addition to the 3 key functions that are supported by the theater ticket service, the following are other functions that can also be supported by the current design.
+
+* Find hold to reserve ratio (Number of tickets converted from hold to reserve)
+* Find the level which is most/least booked
+* Uniquely identify a customer hold/reserve request
+* Find if a specific seat in the theater(with relative positon) is available or not
+
 
 
 
