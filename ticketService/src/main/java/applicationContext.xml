@@ -12,12 +12,7 @@
  <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
   <property name="dataSource" ref="ds" />
  </bean>
- <bean id="ldao" class="dao.LevelDAO">
-  <property name="jdbcTemplate" ref="jdbcTemplate" />
- </bean>
- <bean id="sdao" class="dao.SeatDAO">
-  <property name="jdbcTemplate" ref="jdbcTemplate" />
- </bean>
+
  <bean id="tdao" class="service.TicketServiceImpl">
   <property name="jdbcTemplate" ref="jdbcTemplate" />
  </bean>

@@ -1,5 +1,10 @@
 package model;
 
+/**
+ * This class represents the SeatHold Object for the TheaterTicketService.
+ * Created by Vinoth Kumar on 8/21/2016.
+ */
+
 import java.sql.Timestamp;
 import java.util.UUID;
 
@@ -12,7 +17,7 @@ public class SeatHold {
 		super();
 	}
 	public SeatHold(UUID seatHoldid, String customerEmail, Timestamp holdTime, String confirmationCode,
-			Timestamp reservationTime, Integer noOfSeats) {
+			Timestamp reservationTime, Integer noOfSeats, Integer isValidHold) {
 		super();
 		this.seatHoldid = seatHoldid;
 		this.customerEmail = customerEmail;
@@ -20,6 +25,7 @@ public class SeatHold {
 		this.confirmationCode = confirmationCode;
 		this.reservationTime = reservationTime;
 		this.noOfSeats = noOfSeats;
+		this.isValidHold = isValidHold;
 	}
 	public void setSeatHoldid(UUID seatHoldid) {
 		this.seatHoldid = seatHoldid;
@@ -53,7 +59,7 @@ public class SeatHold {
 	private String confirmationCode;
 	private Timestamp reservationTime;
 	private Integer noOfSeats;
-	private Integer isValidHold;
+	public Integer isValidHold;
 	public Integer getIsValidHold() {
 		return isValidHold;
 	}

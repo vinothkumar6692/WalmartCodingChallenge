@@ -1,5 +1,10 @@
 package model;
 
+/**
+ * This class represents the Level Object for the TheaterTicketService.
+ * Created by Vinoth Kumar on 8/21/2016.
+ */
+
 public class Level {
 	private Integer levelId;
 	private String levelName;

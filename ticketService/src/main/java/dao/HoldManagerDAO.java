@@ -12,6 +12,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import model.Seat;
 import model.SeatHold;
 
+/**
+ * This class acts as a Hold Manager and removes all expired holds.
+ * Created by Vinoth Kumar on 8/21/2016.
+ */
+
+
 public class HoldManagerDAO {
 	public JdbcTemplate jdbcTemplate;
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) { 
@@ -37,26 +43,26 @@ public class HoldManagerDAO {
 					/*Remove all the holds that have expired*/
 					
 					/*set isValidHold in seatHold table to invalid*/
-					String changeHoldValidStatusQuery = "update seatHold set isValidHold = 0 where seatholdId = "+"'"+holdID+"'";
-					jdbcTemplate.update(changeHoldValidStatusQuery);
+					String changeHoldValidStatusQuery = "update seatHold set isValidHold = 0 where seatholdId = ?";
+					jdbcTemplate.update(changeHoldValidStatusQuery,new Object[]{holdID.toString()});
 					
 					/*Retrieve all the corresponding seatIDs for the current Hold and set the status of the seats to available in the 'Seat' table */
-					String findHoldSeats = "select seatId from SeatholdMapping where seatholdId = "+"'"+holdID+"'";
+					String findHoldSeats = "select seatId from SeatholdMapping where seatholdId = ?";
 					
-					List<Map<String, Object>> res = jdbcTemplate.queryForList(findHoldSeats);
+					List<Map<String, Object>> res = jdbcTemplate.queryForList(findHoldSeats,new Object[]{holdID.toString()});
 					for (Map<String, Object> rowMap : res) {
 						for(Entry<String, Object> entry : rowMap.entrySet())
 					    {   //print keys and values
 					         Integer currentSeatId = (Integer) entry.getValue();
-					         String seatStatusReserveQuery = "update Seat set status = 1 where seatId = "+currentSeatId;
-					         jdbcTemplate.update(seatStatusReserveQuery);
+					         String seatStatusReserveQuery = "update Seat set status = 1 where seatId = ?";
+					         jdbcTemplate.update(seatStatusReserveQuery,new Object[]{currentSeatId});
 					    }
 					}
 					
 					
 					/*Remove entries in SeatHoldMapping Table*/
-					String deleteSeatHoldMappingEntriesQuery = "delete from SeatholdMapping where seatholdId = "+"'"+holdID+"'";
-					jdbcTemplate.update(deleteSeatHoldMappingEntriesQuery);
+					String deleteSeatHoldMappingEntriesQuery = "delete from SeatholdMapping where seatholdId = ?";
+					jdbcTemplate.update(deleteSeatHoldMappingEntriesQuery,new Object[]{holdID.toString()});
 					
 				}
 				else{

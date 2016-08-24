@@ -45,6 +45,36 @@
 <artifactId>mysql-connector-java</artifactId>
 <version>5.1.6</version>
 </dependency>
+<dependency>
+    <groupId>org.powermock</groupId>
+    <artifactId>powermock-module-junit4</artifactId>
+    <version>1.6.5</version>
+</dependency>
+<dependency>
+    <groupId>org.powermock</groupId>
+    <artifactId>powermock-api-easymock</artifactId>
+    <version>1.6.5</version>
+</dependency>
+<dependency>
+    <groupId>org.easymock</groupId>
+    <artifactId>easymock</artifactId>
+    <scope>test</scope>
+    <version>3.0</version>
+</dependency>           
+ 
+<dependency>
+    <groupId>org.powermock</groupId>
+    <artifactId>powermock-easymock-release-full</artifactId>
+    <scope>test</scope>
+    <version>1.4.8</version>
+    <classifier>full</classifier>
+</dependency>
+<dependency>
+    <groupId>org.powermock</groupId>
+    <artifactId>powermock-api-mockito</artifactId>
+    <version>1.6.5</version>
+</dependency>
+
     </dependencies>
 
     <properties>

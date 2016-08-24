@@ -1,6 +1,11 @@
 package model;
 import model.Level;
 
+/**
+ * This class represents the Seat Object for the TheaterTicketService.
+ * Created by Vinoth Kumar on 8/21/2016.
+ */
+
 public class Seat {
 	private Level level;
 	public Level getLevel() {
