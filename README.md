@@ -13,9 +13,9 @@ Supported Functions
 
 
 * Find the number of seats available within the venue, optionally by seating level
-  (available seats are seats that are neither held nor reserved)
+  (available seats are seats that are neither held nor reserved.)
 * Find and hold the best available seats on behalf of a customer, which can be limited to specific levels
-  (Each ticket hold will expire within 60 seconds.
+  (Each ticket hold will expire within 60 seconds.)
 * Reserve and commit a specific group of held seats for a customer
 
 Requirements

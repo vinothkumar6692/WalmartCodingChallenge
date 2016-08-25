@@ -1,0 +1,42 @@
+<testng-results>
+  <reporter-output>
+  </reporter-output>
+  <suite name="Surefire suite" duration-ms="2535" started-at="2016-08-25T19:35:41Z" finished-at="2016-08-25T19:35:44Z">
+    <groups>
+    </groups>
+    <test name="Surefire test" duration-ms="2535" started-at="2016-08-25T19:35:41Z" finished-at="2016-08-25T19:35:44Z">
+      <class name="ticketService.TicketServiceUtilTest">
+        <test-method status="PASS" signature="test()" name="test on instance test(ticketService.TicketServiceUtilTest)" duration-ms="1" started-at="2016-08-25T19:35:44Z" finished-at="2016-08-25T19:35:44Z">
+        </test-method>
+        <test-method status="PASS" signature="testGetAllLevels()" name="testGetAllLevels on instance testGetAllLevels(ticketService.TicketServiceUtilTest)" duration-ms="129" started-at="2016-08-25T19:35:44Z" finished-at="2016-08-25T19:35:44Z">
+        </test-method>
+      </class>
+      <class name="ticketService.TicketServiceImplTests">
+        <test-method status="PASS" signature="testNumSeatsAvailableValidTest()" name="testNumSeatsAvailableValidTest on instance testNumSeatsAvailableValidTest(ticketService.TicketServiceImplTests)" duration-ms="183" started-at="2016-08-25T19:35:43Z" finished-at="2016-08-25T19:35:43Z">
+        </test-method>
+        <test-method status="PASS" signature="testNumSeatsAvailableInvalid()" name="testNumSeatsAvailableInvalid on instance testNumSeatsAvailableInvalid(ticketService.TicketServiceImplTests)" duration-ms="8" started-at="2016-08-25T19:35:43Z" finished-at="2016-08-25T19:35:43Z">
+        </test-method>
+        <test-method status="PASS" signature="testInvalidHoldReserveRequestResponse()" name="testInvalidHoldReserveRequestResponse on instance testInvalidHoldReserveRequestResponse(ticketService.TicketServiceImplTests)" duration-ms="128" started-at="2016-08-25T19:35:43Z" finished-at="2016-08-25T19:35:43Z">
+        </test-method>
+        <test-method status="PASS" signature="testReserveSeats()" name="testReserveSeats on instance testReserveSeats(ticketService.TicketServiceImplTests)" duration-ms="70" started-at="2016-08-25T19:35:43Z" finished-at="2016-08-25T19:35:43Z">
+        </test-method>
+        <test-method status="PASS" signature="testfindAndHoldSeats()" name="testfindAndHoldSeats on instance testfindAndHoldSeats(ticketService.TicketServiceImplTests)" duration-ms="253" started-at="2016-08-25T19:35:43Z" finished-at="2016-08-25T19:35:43Z">
+        </test-method>
+        <test-method status="PASS" signature="testVerifyHoldStatus()" name="testVerifyHoldStatus on instance testVerifyHoldStatus(ticketService.TicketServiceImplTests)" duration-ms="181" started-at="2016-08-25T19:35:43Z" finished-at="2016-08-25T19:35:43Z">
+        </test-method>
+        <test-method status="PASS" signature="testUniqueSeatHoldID()" name="testUniqueSeatHoldID on instance testUniqueSeatHoldID(ticketService.TicketServiceImplTests)" duration-ms="173" started-at="2016-08-25T19:35:43Z" finished-at="2016-08-25T19:35:44Z">
+        </test-method>
+      </class>
+      <class name="TicketServiceDAOTest">
+        <test-method status="PASS" signature="testBestSeatsInLevel()" name="testBestSeatsInLevel on instance testBestSeatsInLevel(TicketServiceDAOTest)" duration-ms="954" started-at="2016-08-25T19:35:41Z" finished-at="2016-08-25T19:35:42Z">
+        </test-method>
+        <test-method status="PASS" signature="testCreateNewSeatHold()" name="testCreateNewSeatHold on instance testCreateNewSeatHold(TicketServiceDAOTest)" duration-ms="131" started-at="2016-08-25T19:35:42Z" finished-at="2016-08-25T19:35:42Z">
+        </test-method>
+        <test-method status="PASS" signature="testReserveHoldTickets()" name="testReserveHoldTickets on instance testReserveHoldTickets(TicketServiceDAOTest)" duration-ms="181" started-at="2016-08-25T19:35:42Z" finished-at="2016-08-25T19:35:42Z">
+        </test-method>
+        <test-method status="PASS" signature="testfindSeatHold()" name="testfindSeatHold on instance testfindSeatHold(TicketServiceDAOTest)" duration-ms="99" started-at="2016-08-25T19:35:42Z" finished-at="2016-08-25T19:35:43Z">
+        </test-method>
+      </class>
+    </test>
+  </suite>
+</testng-results>

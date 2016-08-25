@@ -22,5 +22,13 @@
   <bean id="tsdao" class="dao.TicketServiceDAO">
   <property name="jdbcTemplate" ref="jdbcTemplate" />
  </bean>
- 
+  <bean id="leveldao" class="dao.LevelDAO">
+  <property name="jdbcTemplate" ref="jdbcTemplate" />
+ </bean>
+ <bean id="utilbean" class="service.TicketServiceUtils">
+  <property name="jdbcTemplate" ref="jdbcTemplate" />
+ </bean>
+  <bean id="utildao" class="dao.TicketServiceUtilsDAO">
+  <property name="jdbcTemplate" ref="jdbcTemplate" />
+ </bean>
 </beans>

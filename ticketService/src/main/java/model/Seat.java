@@ -7,12 +7,12 @@ import model.Level;
  */
 
 public class Seat {
-	private Level level;
-	public Level getLevel() {
-		return level;
+	private Integer levelId;
+	public Integer getLevelId() {
+		return levelId;
 	}
-	public void setLevel(Level level) {
-		this.level = level;
+	public void setLevelId(Integer levelId) {
+		this.levelId = levelId;
 	}
 	public Integer getRow() {
 		return row;
@@ -28,6 +28,9 @@ public class Seat {
 	}
 	public Integer getScore() {
 		return score;
+	}
+	public Seat() {
+		super();
 	}
 	public void setScore(Integer score) {
 		this.score = score;

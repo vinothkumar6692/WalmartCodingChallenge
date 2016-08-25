@@ -8,7 +8,7 @@ package model;
 public class Level {
 	private Integer levelId;
 	private String levelName;
-	private Float price;
+	private Double price;
 	private Integer numberOfRow;
 	private Integer seatsInRow;
 	public Integer getLevelId() {
@@ -23,11 +23,11 @@ public class Level {
 	public void setLevelName(String levelName) {
 		this.levelName = levelName;
 	}
-	public Float getPrice() {
+	public Double getPrice() {
 		return price;
 	}
-	public void setPrice(Float price) {
-		this.price = price;
+	public void setPrice(double d) {
+		this.price = d;
 	}
 	public Integer getNumberOfRow() {
 		return numberOfRow;
