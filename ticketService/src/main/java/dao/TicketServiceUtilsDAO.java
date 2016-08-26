@@ -13,7 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.joda.time.DateTime;
+
+
+import model.Level;
 import model.Seat;
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -54,4 +56,12 @@ public class TicketServiceUtilsDAO {
 		return seats;
 	}
 
+	/* Method to find the number of Levels in the theater*/
+	public int findLevelsInTheater(){
+		logger.info("Finding all available levels in the Theater..");
+		String query = "select count(*) from level";
+			return jdbcTemplate.queryForInt(query);		
+	}
+	
+	
 }

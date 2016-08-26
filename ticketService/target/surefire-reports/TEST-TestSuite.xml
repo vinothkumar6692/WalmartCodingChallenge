@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TestSuite" time="26.173" tests="13" errors="0" skipped="0" failures="0">
+<testsuite name="TestSuite" time="32.11" tests="13" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib"/>
@@ -61,17 +61,17 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="testBestSeatsInLevel on instance testBestSeatsInLevel(TicketServiceDAOTest)" classname="TicketServiceDAOTest" time="1.225"/>
-  <testcase name="testCreateNewSeatHold on instance testCreateNewSeatHold(TicketServiceDAOTest)" classname="TicketServiceDAOTest" time="1.356"/>
-  <testcase name="testReserveHoldTickets on instance testReserveHoldTickets(TicketServiceDAOTest)" classname="TicketServiceDAOTest" time="1.537"/>
-  <testcase name="testfindSeatHold on instance testfindSeatHold(TicketServiceDAOTest)" classname="TicketServiceDAOTest" time="1.636"/>
-  <testcase name="testNumSeatsAvailableValidTest on instance testNumSeatsAvailableValidTest(ticketService.TicketServiceImplTests)" classname="ticketService.TicketServiceImplTests" time="1.82"/>
-  <testcase name="testNumSeatsAvailableInvalid on instance testNumSeatsAvailableInvalid(ticketService.TicketServiceImplTests)" classname="ticketService.TicketServiceImplTests" time="1.828"/>
-  <testcase name="testInvalidHoldReserveRequestResponse on instance testInvalidHoldReserveRequestResponse(ticketService.TicketServiceImplTests)" classname="ticketService.TicketServiceImplTests" time="1.957"/>
-  <testcase name="testReserveSeats on instance testReserveSeats(ticketService.TicketServiceImplTests)" classname="ticketService.TicketServiceImplTests" time="2.026"/>
-  <testcase name="testfindAndHoldSeats on instance testfindAndHoldSeats(ticketService.TicketServiceImplTests)" classname="ticketService.TicketServiceImplTests" time="2.282"/>
-  <testcase name="testVerifyHoldStatus on instance testVerifyHoldStatus(ticketService.TicketServiceImplTests)" classname="ticketService.TicketServiceImplTests" time="2.462"/>
-  <testcase name="testUniqueSeatHoldID on instance testUniqueSeatHoldID(ticketService.TicketServiceImplTests)" classname="ticketService.TicketServiceImplTests" time="2.636"/>
-  <testcase name="test on instance test(ticketService.TicketServiceUtilTest)" classname="ticketService.TicketServiceUtilTest" time="2.641"/>
-  <testcase name="testGetAllLevels on instance testGetAllLevels(ticketService.TicketServiceUtilTest)" classname="ticketService.TicketServiceUtilTest" time="2.767"/>
+  <testcase name="testNumSeatsAvailableValidTest on instance testNumSeatsAvailableValidTest(ticketService.TicketServiceImplTests)" classname="ticketService.TicketServiceImplTests" time="0.558"/>
+  <testcase name="testNumSeatsAvailableInvalid on instance testNumSeatsAvailableInvalid(ticketService.TicketServiceImplTests)" classname="ticketService.TicketServiceImplTests" time="0.563"/>
+  <testcase name="testInvalidHoldReserveRequestResponse on instance testInvalidHoldReserveRequestResponse(ticketService.TicketServiceImplTests)" classname="ticketService.TicketServiceImplTests" time="1.935"/>
+  <testcase name="testReserveSeats on instance testReserveSeats(ticketService.TicketServiceImplTests)" classname="ticketService.TicketServiceImplTests" time="2.14"/>
+  <testcase name="testfindAndHoldSeats on instance testfindAndHoldSeats(ticketService.TicketServiceImplTests)" classname="ticketService.TicketServiceImplTests" time="2.479"/>
+  <testcase name="testVerifyHoldStatus on instance testVerifyHoldStatus(ticketService.TicketServiceImplTests)" classname="ticketService.TicketServiceImplTests" time="2.688"/>
+  <testcase name="testUniqueSeatHoldID on instance testUniqueSeatHoldID(ticketService.TicketServiceImplTests)" classname="ticketService.TicketServiceImplTests" time="2.899"/>
+  <testcase name="test on instance test(ticketService.TicketServiceUtilTest)" classname="ticketService.TicketServiceUtilTest" time="2.901"/>
+  <testcase name="testGetAllLevels on instance testGetAllLevels(ticketService.TicketServiceUtilTest)" classname="ticketService.TicketServiceUtilTest" time="3.039"/>
+  <testcase name="testBestSeatsInLevel on instance testBestSeatsInLevel(TicketServiceDAOTest)" classname="TicketServiceDAOTest" time="3.103"/>
+  <testcase name="testCreateNewSeatHold on instance testCreateNewSeatHold(TicketServiceDAOTest)" classname="TicketServiceDAOTest" time="3.174"/>
+  <testcase name="testReserveHoldTickets on instance testReserveHoldTickets(TicketServiceDAOTest)" classname="TicketServiceDAOTest" time="3.284"/>
+  <testcase name="testfindSeatHold on instance testfindSeatHold(TicketServiceDAOTest)" classname="TicketServiceDAOTest" time="3.347"/>
 </testsuite>

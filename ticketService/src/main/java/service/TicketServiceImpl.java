@@ -14,10 +14,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.joda.time.DateTime;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import model.Level;
 import model.Seat;
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -25,6 +26,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 
 import dao.HoldManagerDAO;
+import dao.LevelDAO;
 import dao.TicketServiceDAO;
 
 import model.SeatHold;
@@ -81,8 +83,7 @@ public class TicketServiceImpl implements TicketService{
 			if(venueLevel.isPresent()){
 				if(ticketServiceDAO.findLevels()<venueLevel.get()){
 					logger.info("Invalid Level:"+venueLevel);
-					System.out.println("Invalid Level");
-					return 0;
+					return -1;
 				}
 				
 			}
@@ -109,7 +110,7 @@ public class TicketServiceImpl implements TicketService{
 		logger.info("Removing all invalid/expired holds..");
 		holdManager.removeAllInvalidHolds();
 		TicketServiceDAO ticketServiceDAO = (TicketServiceDAO) ctx.getBean("tsdao");
-		
+
 		synchronized(this){
 			logger.info("Trying to hold the requested seats..");
 			for(int i=minLevel.get();i<=maxLevel.get();i++){		
@@ -121,11 +122,7 @@ public class TicketServiceImpl implements TicketService{
 					/* Find the best seats in the given level*/
 					logger.info("Finding best seats for the customer");
 					List<Seat> seats  = ticketServiceDAO.findBestSeatsInLevel(i,numSeats);
-					System.out.println("Finding Seats");
-					System.out.println("Seat count:"+seats.size());			
-					for(Seat s : seats){
-						System.out.println("Seat count:"+s.getSeatID());
-					}							
+					
 					/* Create an entry in the Seathold Table for the current customer request*/
 					UUID uniqueId = UUID.randomUUID();
 					logger.info("Unique Hold Id Created:"+uniqueId);
@@ -160,25 +157,23 @@ public class TicketServiceImpl implements TicketService{
 			logger.info("Invalid HoldId!!");
 			return "Invalid HoldID";
 		}
+		String confirmationCode;
 		Timestamp holdTime = ticketServiceDAO.findHoldTime(seatHoldId);
 		long holdReserveTimeDifference = currentTime.getTime()-holdTime.getTime();		
-		System.out.println("Time current:"+currentTime);
-		System.out.println("Time fetched:"+holdTime);
-		System.out.println(holdReserveTimeDifference);
 		if(holdReserveTimeDifference>60000){
 			logger.info("Hold Time has expired for HoldID:"+seatHoldId);
 			logger.info("Returning booking status");
-			return "Unable to reserve ticket! Hold time has expired 60 seconds";
+			return null;
 		}
 		else{
 			logger.info("HoldId is still valid..");
 			/* Reserve the seats for the corresponding seatHoldId*/		
-			String confirmationCode = UUID.randomUUID().toString();		
+			confirmationCode = UUID.randomUUID().toString();		
 			logger.info("Unique confirmation code :"+confirmationCode);
 			ticketServiceDAO.reserveHoldTicket(confirmationCode,currentTime,seatHoldId);
 			logger.info("Seats reserved for HoldID:"+seatHoldId);
 			logger.info("Returning booking status");
 			}			
-			return "Booking Succesful!";			
+			return confirmationCode;			
 		}	
 }

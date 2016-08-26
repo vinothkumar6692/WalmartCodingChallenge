@@ -12,7 +12,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.joda.time.DateTime;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -67,17 +67,25 @@ public class TicketServiceUtils {
 		List<Level> levels = levelDAO.getLevels();
 		return levels;
 	}
+	public int getNumberOfLevels(){
+		ctx = new ClassPathXmlApplicationContext(
+			    "applicationContext.xml");
+		utilDAO = (TicketServiceUtilsDAO) ctx.getBean("utildao");
+		int levels = utilDAO.findLevelsInTheater();
+		return levels;
+	}
 	
 	/*Utility Method to display all level information*/
 	public void displayLevels(List<Level> levels){
 		if(levels.size()==0){
 			System.out.println("No levels Available");
 		}
-		System.out.println("\n\n****Available Levels in the Theater****");
-		System.out.println("Level \tLevel Name \t Price");
+		System.out.println("\n\n\t\t*** Available Levels in the Theater ***");
+		System.out.println("\t\t*Level \tLevel Name \t Price        *");
 		for(Level level: levels){
-			System.out.format("%5s%12s%12s\n", level.getLevelId(), level.getLevelName(), level.getPrice());
+			System.out.format("\t\t*%5s%12s%12s        *\n", level.getLevelId(), level.getLevelName(), level.getPrice());
 		}
+		System.out.println("\t\t***************************************");
 	}
 	
 	/*Utility Method to display seat hold information for a specific SeatHold*/
@@ -86,13 +94,17 @@ public class TicketServiceUtils {
 			    "applicationContext.xml");
 		utilDAO = (TicketServiceUtilsDAO) ctx.getBean("utildao");
 		List<Seat> seats = utilDAO.getSeatsInformation(seathold.getSeatHoldid().toString());
-		System.out.println("\n\n*********SeatHold Information**********");
+		System.out.println("\n\n\t\t**********SeatHold Information******************");
 		for(Seat seat : seats){
-			System.out.println("Level Id:"+seat.getLevelId());
-			System.out.println("Row Number:"+seat.getRow());
-			System.out.println("Seat Number:"+seat.getSeatNo()+"\n");
+			System.out.println("\t\t* Level Id:"+seat.getLevelId()+"\tRow Number:"+seat.getRow()+"\tSeat Number:"+seat.getSeatNo()+" *");
 		}	
-		System.out.println("******End of SeatHold Information******\n");
+		System.out.println("\t\t***********End of SeatHold Information**********\n");
 	}
-
+	
+	/* Utility Method to get all Level information*/
+	public List<Level> getLevelInformation(){
+		LevelDAO levelDAO = (LevelDAO) ctx.getBean("leveldao");
+		List<Level> levelInfo = levelDAO.getLevels();
+		return levelInfo;
+	}
 }

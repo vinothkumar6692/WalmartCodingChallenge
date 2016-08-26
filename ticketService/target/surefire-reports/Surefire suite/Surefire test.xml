@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite hostname="Vigneshs-MacBook-Pro.local" name="TicketServiceDAOTest" tests="13" failures="0" timestamp="25 Aug 2016 23:35:44 GMT" time="2.535" errors="0">
-  <testcase name="testBestSeatsInLevel on instance testBestSeatsInLevel(TicketServiceDAOTest)" time="0.954" classname="TicketServiceDAOTest"/>
-  <testcase name="testCreateNewSeatHold on instance testCreateNewSeatHold(TicketServiceDAOTest)" time="0.131" classname="TicketServiceDAOTest"/>
-  <testcase name="testReserveHoldTickets on instance testReserveHoldTickets(TicketServiceDAOTest)" time="0.181" classname="TicketServiceDAOTest"/>
-  <testcase name="testfindSeatHold on instance testfindSeatHold(TicketServiceDAOTest)" time="0.099" classname="TicketServiceDAOTest"/>
-  <testcase name="testNumSeatsAvailableValidTest on instance testNumSeatsAvailableValidTest(ticketService.TicketServiceImplTests)" time="0.183" classname="ticketService.TicketServiceImplTests"/>
-  <testcase name="testNumSeatsAvailableInvalid on instance testNumSeatsAvailableInvalid(ticketService.TicketServiceImplTests)" time="0.008" classname="ticketService.TicketServiceImplTests"/>
-  <testcase name="testInvalidHoldReserveRequestResponse on instance testInvalidHoldReserveRequestResponse(ticketService.TicketServiceImplTests)" time="0.128" classname="ticketService.TicketServiceImplTests"/>
-  <testcase name="testReserveSeats on instance testReserveSeats(ticketService.TicketServiceImplTests)" time="0.07" classname="ticketService.TicketServiceImplTests"/>
-  <testcase name="testfindAndHoldSeats on instance testfindAndHoldSeats(ticketService.TicketServiceImplTests)" time="0.253" classname="ticketService.TicketServiceImplTests"/>
-  <testcase name="testVerifyHoldStatus on instance testVerifyHoldStatus(ticketService.TicketServiceImplTests)" time="0.181" classname="ticketService.TicketServiceImplTests"/>
-  <testcase name="testUniqueSeatHoldID on instance testUniqueSeatHoldID(ticketService.TicketServiceImplTests)" time="0.173" classname="ticketService.TicketServiceImplTests"/>
+<testsuite hostname="Vigneshs-MacBook-Pro.local" name="ticketService.TicketServiceImplTests" tests="13" failures="0" timestamp="26 Aug 2016 04:43:28 GMT" time="3.038" errors="0">
+  <testcase name="testNumSeatsAvailableValidTest on instance testNumSeatsAvailableValidTest(ticketService.TicketServiceImplTests)" time="0.227" classname="ticketService.TicketServiceImplTests"/>
+  <testcase name="testNumSeatsAvailableInvalid on instance testNumSeatsAvailableInvalid(ticketService.TicketServiceImplTests)" time="0.006" classname="ticketService.TicketServiceImplTests"/>
+  <testcase name="testInvalidHoldReserveRequestResponse on instance testInvalidHoldReserveRequestResponse(ticketService.TicketServiceImplTests)" time="1.372" classname="ticketService.TicketServiceImplTests"/>
+  <testcase name="testReserveSeats on instance testReserveSeats(ticketService.TicketServiceImplTests)" time="0.205" classname="ticketService.TicketServiceImplTests"/>
+  <testcase name="testfindAndHoldSeats on instance testfindAndHoldSeats(ticketService.TicketServiceImplTests)" time="0.337" classname="ticketService.TicketServiceImplTests"/>
+  <testcase name="testVerifyHoldStatus on instance testVerifyHoldStatus(ticketService.TicketServiceImplTests)" time="0.208" classname="ticketService.TicketServiceImplTests"/>
+  <testcase name="testUniqueSeatHoldID on instance testUniqueSeatHoldID(ticketService.TicketServiceImplTests)" time="0.211" classname="ticketService.TicketServiceImplTests"/>
   <testcase name="test on instance test(ticketService.TicketServiceUtilTest)" time="0.001" classname="ticketService.TicketServiceUtilTest"/>
-  <testcase name="testGetAllLevels on instance testGetAllLevels(ticketService.TicketServiceUtilTest)" time="0.129" classname="ticketService.TicketServiceUtilTest"/>
+  <testcase name="testGetAllLevels on instance testGetAllLevels(ticketService.TicketServiceUtilTest)" time="0.138" classname="ticketService.TicketServiceUtilTest"/>
+  <testcase name="testBestSeatsInLevel on instance testBestSeatsInLevel(TicketServiceDAOTest)" time="0.062" classname="TicketServiceDAOTest"/>
+  <testcase name="testCreateNewSeatHold on instance testCreateNewSeatHold(TicketServiceDAOTest)" time="0.072" classname="TicketServiceDAOTest"/>
+  <testcase name="testReserveHoldTickets on instance testReserveHoldTickets(TicketServiceDAOTest)" time="0.11" classname="TicketServiceDAOTest"/>
+  <testcase name="testfindSeatHold on instance testfindSeatHold(TicketServiceDAOTest)" time="0.062" classname="TicketServiceDAOTest"/>
 </testsuite>

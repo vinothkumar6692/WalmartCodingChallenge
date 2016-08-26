@@ -71,18 +71,22 @@ $ git clone git@github.com:vinothkumar6692/WalmartCodingChallenge.git
 $ cd ticketService/src/main/resources
 ```
 
+* Start the mySQL server using
+```bash
+$ sudo /usr/local/mysql/support-files/mysql.server start
+```
+
+NOTE: The application is configured to use MySQL's default user id "root", Local IP, Port and there is no password required.
+If you have configured a different user ID, password, Local IP/port - Make the corresponding change in the applicationContext.xml file
+
+The applicationContext.xml is available in the src/main/java folder.
+
 * Setup the database using the following command
 
 ```bash
-$ cat db_init.sql | mysql -u root -p
+$ cat src/main/resources/db_script.sql | mysql -u root -p
 ```
 Enter the password to your database when prompted. 
-
-* Change the working directory to the /ticketService using
-
-```bash
-$ cd ../../..
-```
 
 * To create the application package using maven, do
 
