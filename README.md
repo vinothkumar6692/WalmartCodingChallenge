@@ -65,12 +65,6 @@ Installation Instructions
 $ git clone git@github.com:vinothkumar6692/WalmartCodingChallenge.git
 ```
 
-* Change current working directory into the folder containing the database script files
-
-```bash
-$ cd ticketService/src/main/resources
-```
-
 * Start the mySQL server using
 ```bash
 $ sudo /usr/local/mysql/support-files/mysql.server start
@@ -82,6 +76,11 @@ If you have configured a different user ID, password, Local IP/port - Make the c
 The applicationContext.xml is available in the src/main/java folder.
 
 * Setup the database using the following command
+
+```bash
+$ cat src/main/resources/db_script.sql | mysql -u root
+```
+If you have configured a password for you MySQL server, use the following command
 
 ```bash
 $ cat src/main/resources/db_script.sql | mysql -u root -p
