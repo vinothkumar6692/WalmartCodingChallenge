@@ -61,7 +61,18 @@ Similarly, seat **R3-S5** will have a higher score than R1-S5 because **R3-S5** 
 Installation Instructions 
 =======
 
-* Ensure that all Maven and Mysql are installed in your machine.
+* Ensure that all Maven and Mysql are installed in your machine.<br/>
+If not, use the following command to install.
+
+```bash
+$ brew install maven
+```
+
+```bash
+$ brew install mysql
+```
+
+
 
 * Clone the repository using 
 
@@ -75,13 +86,11 @@ $ sudo /usr/local/mysql/support-files/mysql.server start
 ```
 
 NOTE: The application is configured to use MySQL's default settings<br/>
-user id: "root"<br/>
-password:(no password by default)<br/>
-Local IP: localhost<br/>
-Port:3306 <br/>
-If you have configured a different user ID, password, Local IP/port - Make the corresponding change in the applicationContext.xml file
-
-The applicationContext.xml is available in the src/main/java folder.
+* User id: "root"<br/>
+* Password:(no password by default)<br/>
+* Local IP: localhost<br/>
+* Port:3306 <br/><br/>
+If you have configured a different user ID, password, Local IP,port - Make the corresponding change in the applicationContext.xml file. The **applicationContext.xml** is available in the **src/main/java** folder.
 
 * Setup the database using the following command
 
@@ -114,25 +123,13 @@ $ java -jar target/ticketService-0.0.1-SNAPSHOT.jar service.TheaterTicketService
 ```
 
 
-
-Other Supported Functions
-=======
-
-In addition to the 3 key functions that are supported by the theater ticket service, the following are other functions that can also be supported by the current design.
-
-* Find hold to reserve ratio (Number of tickets converted from hold to reserve)
-* Find the level which is most/least booked
-* Uniquely identify a customer hold/reserve request
-* Find if a specific seat in the theater(with relative positon) is available or not
-
-
 TroubleShooting
 =======
 * If you are having issues during build because the application is not connecting to the database, mdodify the applicationContext.xml file in target/classes to have the correct user id, password, Local IP and port settings. Clean the project using 
 ```bash
-$ mvn build
+$ mvn clean
 ```
-and build again
+and build again.
 
 Sample Screenshots
 =======
@@ -155,6 +152,18 @@ Sample Screenshots
 ***Expired Hold***
 <img src = "https://s13.postimg.org/ue16r6047/Screen_Shot_2016_08_26_at_2_15_53_PM.png" align = "center">
 
+
+
+
+Other Supported Functions
+=======
+
+In addition to the 3 key functions that are supported by the theater ticket service, the following are other functions that can also be supported by the current design.
+
+* Find hold to reserve ratio (Number of tickets converted from hold to reserve)
+* Find the level which is most/least booked
+* Uniquely identify a customer hold/reserve request
+* Find if a specific seat in the theater(with relative positon) is available or not
 
 
 
