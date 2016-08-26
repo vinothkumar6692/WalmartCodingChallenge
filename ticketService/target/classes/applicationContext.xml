@@ -5,9 +5,9 @@
  <bean id="ds"
   class="org.springframework.jdbc.datasource.DriverManagerDataSource">
   <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-  <property name="url" value="jdbc:mysql://127.0.0.1:3307/theater" />
+  <property name="url" value="jdbc:mysql://root:3306/theater" />
   <property name="username" value="root" />
-  <property name="password" value="apple" />
+  <property name="password" value="root" />
  </bean>
  <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
   <property name="dataSource" ref="ds" />
