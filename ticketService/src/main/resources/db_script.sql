@@ -1,7 +1,7 @@
 # Create Database
-create database theater2;
+create database theater;
 
-use theater2;
+use theater;
 
 # Create all Tables
 
@@ -80,7 +80,7 @@ BEGIN
     
     SET levels = 1;
     WHILE levels < 5 DO
-		SELECT numberOfRow,seatsinRow into rowcounts, seatperrow FROM theater2.Level where levelId = levels;    
+		SELECT numberOfRow,seatsinRow into rowcounts, seatperrow FROM theater.Level where levelId = levels;    
         SET startrows = 1;
         SET lvlscore = 100 *(levels-1);
 		WHILE startrows <= rowcounts DO
@@ -97,7 +97,7 @@ BEGIN
 					SET tmpscore = (startrows * 2)+lvlscore;
                 END IF;
             
-				INSERT INTO theater2.Seat (levelId,row, seatNo,score,status) VALUES (levels,startrows,startseatrow,tmpscore,1);
+				INSERT INTO theater.Seat (levelId,row, seatNo,score,status) VALUES (levels,startrows,startseatrow,tmpscore,1);
 				SET startseatrow = startseatrow + 1;
 			END WHILE;
             
@@ -115,7 +115,7 @@ DELIMITER ;
 # Initialize the Procedure 
 
 set @RESULT = 0;
-call theater2.Seatentries(@RESULT);
+call theater.Seatentries(@RESULT);
 select @RESULT;
 
 
