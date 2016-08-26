@@ -134,4 +134,28 @@ $ mvn build
 ```
 and build again
 
+Sample Screenshots
+=======
+
+Start Screen Menu
+<img src = "https://s21.postimg.org/47nz5nnnr/Screen_Shot_2016_08_26_at_2_10_43_PM.png" align = "center">
+
+View Total Available Seats in the Theater
+<img src = "https://s16.postimg.io/mdm3y8hkl/Screen_Shot_2016_08_26_at_2_11_36_PM.png" align = "center">
+
+Find and Hold Best Seats in the Theater
+<img src = "https://s3.postimg.io/i6miilzcz/Screen_Shot_2016_08_26_at_2_12_14_PM.png" align = "center">
+
+Hold and Reserve Tickets
+<img src = "https://s22.postimg.io/pg20vcjsh/Screen_Shot_2016_08_26_at_2_13_14_PM.png" align = "center">
+
+Confirmation Code on after succesful reservation
+<img src = "https://s16.postimg.io/nlkedhvvp/Screen_Shot_2016_08_26_at_2_13_31_PM.png" align = "center">
+
+Expired Hold.
+<img src = "https://s13.postimg.org/ue16r6047/Screen_Shot_2016_08_26_at_2_15_53_PM.png" align = "center">
+
+
+
+
 
