@@ -70,7 +70,11 @@ $ git clone git@github.com:vinothkumar6692/WalmartCodingChallenge.git
 $ sudo /usr/local/mysql/support-files/mysql.server start
 ```
 
-NOTE: The application is configured to use MySQL's default user id "root", Local IP, Port and there is no password required.
+NOTE: The application is configured to use MySQL's default settings
+user id: "root"
+password:(no password by default)
+Local IP: localhost
+Port:3306 
 If you have configured a different user ID, password, Local IP/port - Make the corresponding change in the applicationContext.xml file
 
 The applicationContext.xml is available in the src/main/java folder.
@@ -118,7 +122,12 @@ In addition to the 3 key functions that are supported by the theater ticket serv
 * Find if a specific seat in the theater(with relative positon) is available or not
 
 
-
-
+TroubleShooting
+=======
+* If you are having issues during build because the application is not connecting to the database, mdodify the applicationContext.xml file in target/classes to have the correct user id, password, Local IP and port settings. Clean the project using 
+```bash
+$ mvn build
+```
+and build again
 
 
