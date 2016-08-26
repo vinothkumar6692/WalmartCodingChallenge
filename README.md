@@ -57,6 +57,55 @@ Similarly, seat **R3-S5** will have a higher score than R1-S5 because **R3-S5** 
 Installation Instructions 
 =======
 
+* Ensure that all Maven and Mysql are installed in your machine.
+
+* Clone the repository using 
+
+```bash
+$ git clone git@github.com:vinothkumar6692/WalmartCodingChallenge.git
+```
+
+* Change current working directory into the folder containing the database script files
+
+```bash
+$ cd ticketService/src/main/resources
+```
+
+* Setup the database using the following command
+
+```bash
+$ cat db_init.sql | mysql -u root -p
+```
+Enter the password to your database when prompted. 
+
+* Change the working directory to the /ticketService using
+
+```bash
+$ cd ../../..
+```
+
+* To create the application package using maven, do
+
+```bash
+$ mvn package
+```
+
+* Reset the database using the following command
+
+```bash
+$ cat src/main/resources/db_init.sql | mysql -u root -p
+```
+
+* Run the application using 
+
+```bash
+$ java -jar target/ticketService-0.0.1-SNAPSHOT.jar service.TheaterTicketServiceController
+```
+
+
+
+
+
 
 Other Supported Functions
 =======
