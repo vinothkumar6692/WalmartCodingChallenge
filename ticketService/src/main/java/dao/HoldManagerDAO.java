@@ -23,7 +23,7 @@ public class HoldManagerDAO {
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) { 
 	    this.jdbcTemplate = jdbcTemplate;
 	 }
-	public void removeAllInvalidHolds(){
+	public synchronized void removeAllInvalidHolds(){
 		
 		/*Retrieve all valid holds from Seathold table*/
 		try{
