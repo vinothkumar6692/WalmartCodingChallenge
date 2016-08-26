@@ -47,7 +47,11 @@ The application automatically generates a unique score for each seat in the thea
 * So the relative position of a seat in the theater determines the score for that seat.
 * In the given example, Seats in Level 1 will always have a lower score than seats in level 2.(which also translates to the price since seats in Level 1 are $100 whereas seats in Level 2 are $75). 
 
-*Example*: Let's say there are 5 rows in a given Level and there are 10 Seats in each row. So we have a total of 50 seats. Let R represent the unique row numbered from 1 to 5 with Row#1 being closest to the screen. Let S be the seats in each row which are numbered from 1 to 10.
+*Example*: 
+
+<img src = "https://s4.postimg.org/6436j6h59/Screen_Shot_2016_08_26_at_2_01_57_PM.png" align = "center">
+
+Let's say there are 5 rows in a given Level and there are 10 Seats in each row. So we have a total of 50 seats. Let R represent the unique row numbered from 1 to 5 with Row#1 being closest to the screen. Let S be the seats in each row which are numbered from 1 to 10.( See Diagram above for reference)
 
 So a Seat at **R1-S1**(which is the left most seat on the first row) will have a higher score than the seat at **R1-S5**. This is because the seat R1,S5 is at the middle which will give the customer a better experience.
 
